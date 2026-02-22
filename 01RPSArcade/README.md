@@ -17,8 +17,11 @@ This is a browser based Rock Paper Scissors game built with:
 - CSS variables for theming
 - A tiny AI system with multiple difficulty levels
 - Retro arcade design using Press Start 2P font
+- Persistent game state using localStorage
+- Fully responsive layout
 
 Open `index.html` and it just works.
+Refresh and it stil remembers.
 
 ---
 
@@ -38,6 +41,7 @@ It contains:
 - Score tracking
 - Statistics
 - State transitions
+- Lifetime Statistics
 
 You could plug this engine into React, Vue, or a toaster with WiFi and
 it would still work.
@@ -58,6 +62,7 @@ It:
 - Handles difficulty selection
 - Toggles themes
 - Persists theme preference
+- Saves and restores match state
 
 ---
 
@@ -68,9 +73,25 @@ This is the aesthetic personality.
 - Warm color palette
 - Pixel style borders
 - Hard shadows for arcade depth
-- Centered card layout
+- Responsive card layout
+- Flexible controls for small screens
 - Subtle square grid background
 - Theme switching via CSS variables
+
+---
+
+## Persistence System
+
+The game uses localStorage to maintain:
+
+- Ongoing match state
+- Selected difficulty
+- Theme preference
+- Lifetime statistics
+
+If a game is in progress and the page reloads, the state is rehydrated.The engine resumes from where it left off.
+
+No server required. Just browser memory and disciplined structure.
 
 ---
 
