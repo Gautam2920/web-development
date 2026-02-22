@@ -23,6 +23,33 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("rpsTheme", isDark ? "dark" : "light");
 });
 
+const savedDifficulty = localStorage.getItem("rpsDifficulty");
+if (savedDifficulty) {
+    game.setDifficulty(savedDifficulty);
+    difficultySelect.value = savedDifficulty;
+}
+
+difficultySelect.addEventListener("change", e => {
+    game.setDifficulty(e.target.value);
+    localStorage.setItem("rpsDifficulty", e.target.value);
+});
+
+const savedGame = JSON.parse(localStorage.getItem("rpsGameState"));
+if (savedGame) {
+    Object.assign(game, savedGame);
+
+    if (game.round > 0) {
+        roundEl.textContent = `ROUND ${game.round}`;
+        scoreEl.textContent = `YOU: ${game.humanScore} | CPU: ${game.computerScore}`;
+    }
+
+    if (game.state === "finished") {
+        finalEl.textContent = game.getFinalResult();
+        disableButtons();
+        renderStats();
+    }
+}
+
 buttons.forEach(btn => {
     btn.addEventListener("click", () => handleMove(btn.dataset.choice));
 });
@@ -33,12 +60,9 @@ document.addEventListener("keydown", e => {
     if (e.key === "s") handleMove("scissors");
 });
 
-difficultySelect.addEventListener("change", e => {
-    game.setDifficulty(e.target.value);
-});
-
 resetBtn.addEventListener("click", () => {
     game.reset();
+    localStorage.removeItem("rpsGameState");
     enableButtons();
     clearUI();
 });
@@ -48,6 +72,7 @@ function handleMove(choice) {
     if (!data) return;
 
     render(data);
+    saveGame();
 
     if (data.isGameOver) {
         finalEl.textContent = game.getFinalResult();
@@ -83,4 +108,15 @@ function clearUI() {
     resultEl.textContent = "";
     scoreEl.textContent = "";
     finalEl.textContent = "";
+}
+
+function saveGame() {
+    localStorage.setItem("rpsGameState", JSON.stringify({
+        humanScore: game.humanScore,
+        computerScore: game.computerScore,
+        round: game.round,
+        history: game.history,
+        difficulty: game.difficulty,
+        state: game.state
+    }));
 }

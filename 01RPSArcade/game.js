@@ -93,7 +93,7 @@ export class Game {
 
         if (this.isGameOver()) {
             this.state = "finished";
-            this.updateStats(result);
+            this.updateStats();
         }
 
         return {
@@ -121,7 +121,7 @@ export class Game {
         };
     }
 
-    updateStats(lastResult) {
+    updateStats() {
         this.stats.games++;
         if (this.humanScore > this.computerScore) this.stats.humanWins++;
         if (this.computerScore > this.humanScore) this.stats.computerWins++;
