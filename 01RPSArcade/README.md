@@ -1,5 +1,7 @@
 # Rock Paper Scissors Arcade
 
+Live demo : https://rps-arcade.vercel.app/
+
 A pixel flavored Rock Paper Scissors game that looks like it time
 traveled from an 80s arcade cabinet but runs like modern modular
 JavaScript.
