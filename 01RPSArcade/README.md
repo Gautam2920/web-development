@@ -1,5 +1,7 @@
 # Rock Paper Scissors Arcade
 
+Live Demo : <https://rps-arcade-ed0y.onrender.com> (takes a little time to wake : )  )
+
 A pixel-flavored Rock Paper Scissors game that looks like it
 time‑traveled from an 80s arcade cabinet.\
 but now runs a real-time multiplayer Node.js backend like it means
