@@ -1,107 +1,143 @@
 # Rock Paper Scissors Arcade
 
-Live demo : https://rps-arcade.vercel.app/
+A pixel-flavored Rock Paper Scissors game that looks like it
+time‑traveled from an 80s arcade cabinet.\
+but now runs a real-time multiplayer Node.js backend like it means
+business.
 
-A pixel flavored Rock Paper Scissors game that looks like it time
-traveled from an 80s arcade cabinet but runs like modern modular
-JavaScript.
+Yes. It escalated.
 
-Minimal UI. Warm colors. Clean architecture. Slightly judgmental AI.
+---
+
+## Live Status
+
+Previously: Static browser game.\
+Now: Server-authoritative multiplayer with WebSockets.
+
+Because apparently even Rock Paper Scissors deserves infrastructure.
 
 ---
 
 ## What This Is
 
-This is a browser based Rock Paper Scissors game built with:
+This is a retro-styled Rock Paper Scissors arcade featuring:
 
-- Vanilla JavaScript
-- Modular architecture
-- CSS variables for theming
-- A tiny AI system with multiple difficulty levels
-- Retro arcade design using Press Start 2P font
-- Persistent game state using localStorage
-- Fully responsive layout
+- Express + Socket.IO backend
+- Real-time multiplayer
+- Server-authoritative game engine
+- Modular frontend architecture
+- Press Start 2P pixel font
+- CSS variable theme switching
+- AI difficulty scaling
+- Clean separation between client and server
+- Deployment-ready structure
 
-Open `index.html` and it just works.
-Refresh and it stil remembers.
+It still looks nostalgic.
 
 ---
 
-## How The App Is Structured
+## What Changed
 
-The project is intentionally split into layers.
+Originally this project was:
 
-### game.js
+- Pure browser logic
+- localStorage persistence
+- A slightly judgmental AI
+- No backend
+- Zero networking
 
-This is the brain.
+Now it includes:
 
-It contains:
+- Room creation
+- Role assignment
+- Move validation on the server
+- Real-time round resolution
+- Win detection
+- Proper disconnection handling
+- WebSocket communication
+- No client-side cheating
 
+---
+
+## Architecture Overview
+
+This project is intentionally split into layers:
+
+### Server Layer (`/server`)
+
+It handles:
+
+- Room management
 - Game state
-- Rules
-- Difficulty logic
 - Score tracking
-- Statistics
+- Move validation
+- Round resolution
+- Win detection
+- Disconnect cleanup
+
+---
+
+### Client Layer (`/client`)
+
+It handles:
+
+- UI rendering
+- Theme toggling
+- Mode switching
+- Button interactions
+- Single-player engine
+- Multiplayer socket communication
+- Score display
 - State transitions
-- Lifetime Statistics
-
-You could plug this engine into React, Vue, or a toaster with WiFi and
-it would still work.
 
 ---
 
-### ui.js
+## Single Player Mode
 
-This is the face.
+Still here.
 
-It:
+Difficulty levels:
 
-- Listens to button clicks
-- Listens to keyboard input
-- Renders round results
-- Updates the scoreboard
-- Handles reset
-- Handles difficulty selection
-- Toggles themes
-- Persists theme preference
-- Saves and restores match state
+### Easy
 
----
+Pure randomness.\
+Emotionally neutral. Morally fair.
 
-### styles.css
+### Medium
 
-This is the aesthetic personality.
+60 percent chance it counters your last move.\
+40 percent chance it pretends it didn't notice.
 
-- Warm color palette
-- Pixel style borders
-- Hard shadows for arcade depth
-- Responsive card layout
-- Flexible controls for small screens
-- Subtle square grid background
-- Theme switching via CSS variables
+### Hard
+
+Analyzes your most frequent move.\
+Counters it 85 percent of the time.
+
+It doesn't cheat.\
+It studies you.
+
+That's worse.
 
 ---
 
-## Persistence System
+## Multiplayer Mode
 
-The game uses localStorage to maintain:
+- Create a room
+- Share the room ID
+- Play in real time
+- Server validates everything
+- Automatic win detection
+- Clean disconnect handling
 
-- Ongoing match state
-- Selected difficulty
-- Theme preference
-- Lifetime statistics
-
-If a game is in progress and the page reloads, the state is rehydrated.The engine resumes from where it left off.
-
-No server required. Just browser memory and disciplined structure.
+Open two tabs.\
+Open two devices.
 
 ---
 
-## How The Game Logic Works
+## Rules System
 
-### Rules System
-
-Instead of long if statements, rules are defined in a map:
+Defined declaratively because we don't write 200-line if statements
+anymore.
 
 ``` js
 const RULES = {
@@ -111,111 +147,92 @@ const RULES = {
 };
 ```
 
-This makes the engine declarative and extendable.
-
 Want to add Lizard and Spock?\
-You just update the map.
+Modify the map.
 
 ---
 
-## Difficulty Levels Explained
+## State Management
 
-The difficulty is not fake. It actually changes the AI behavior.
-
-### Easy
-
-Pure randomness.\
-Each move has equal probability.\
-Mathematically fair. Emotionally neutral.
-
-### Medium
-
-Reactive.\
-60 percent chance it counters your last move.\
-40 percent chance it behaves randomly.
-
-It punishes repetition but is not ruthless.
-
-### Hard
-
-Predictive.\
-It analyzes your move history and finds your most frequent choice.\
-Then it counters that.
-
-This assumes you have habits.\
-You probably do.
-
-It does not cheat. It only studies.
-
----
-
-## Game State
-
-The engine maintains internal state:
+Explicit states:
 
 - idle
 - playing
 - finished
 
-This prevents weird edge cases like continuing after the game is over.
+Multiplayer also buffers moves to prevent race conditions.
 
-Rounds are capped using a configurable `maxRounds` value.
-
----
-
-## Keyboard Support
-
-You can play without touching the mouse:
-
-- R for Rock
-- P for Paper
-- S for Scissors
-
-Yes, it feels cooler that way.
+Yes. Even for Rock Paper Scissors.
 
 ---
 
-## Why This Architecture Matters
+## Project Structure
 
-This project is small, but it follows real architectural principles:
-
-- Separation of concerns
-- Pure logic layer
-- UI abstraction
-- Configurable behavior
-- Extendable rules
-- Predictable state transitions
-
-It is intentionally simple but structurally scalable.
-
-You could:
-
-- Add animations
-- Add sound effects
-- Convert to TypeScript
-- Plug it into a framework
-- Add multiplayer
-
-Without rewriting the core engine.
+    rps-arcade/
+    │
+    ├── server/
+    │   ├── index.js
+    │   ├── roomManager.js
+    │   └── gameEngine.js
+    │
+    ├── client/
+    │   ├── index.html
+    │   ├── styles.css
+    │   ├── main.js
+    │   ├── socketService.js
+    │   └── gameEngine.js
+    │
+    ├── package.json
+    └── .env
 
 ---
 
-## How To Run
+## How To Run Locally
 
-1. Clone or download the folder
-2. Open `index.html`
-3. Click buttons
+```md
+
+1. Clone the repository
+2. Install dependencies
+
+   npm install
+
+3.Start the server
+
+   npm start
+
+4.Open
+
+http://localhost:5000
+
+```
 
 ---
 
-## Final Thoughts
+## Deployment Notes
 
-This is Rock Paper Scissors.\
-But structured like it matters.
+This project requires:
 
-Because even small apps deserve clean thinking.
+- A Node.js runtime
+- Persistent WebSocket support
+- Environment variable support
 
-And also because the CPU is watching your patterns.
+Recommended platforms:
+
+- Render
+- Railway
+- Fly.io
+- VPS
+
+Not recommended:
+
+- Serverless platforms that don't support persistent WebSockets
 
 ---
+
+## Final Thought
+
+The UI feels nostalgic.
+
+---
+
 Happy Coding.

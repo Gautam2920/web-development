@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPS Arcade</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <button id="themeToggle" class="theme-toggle">THEME</button>
+
+    <main class="card">
+        <h1>ROCK PAPER SCISSORS</h1>
+
+        <div id="modeSelect" class="mode-select">
+            <button id="singleMode" class="primary-btn">SINGLE PLAYER</button>
+            <button id="multiMode" class="primary-btn">MULTIPLAYER</button>
+        </div>
+
+        <div id="gameArea" class="hidden">
+
+            <div id="onlineControls" class="hidden">
+                <button id="createRoom" class="primary-btn">CREATE ROOM</button>
+                <input id="roomInput" type="text" placeholder="ENTER ROOM ID" />
+                <button id="joinRoom" class="primary-btn">JOIN ROOM</button>
+                <p id="roomInfo"></p>
+            </div>
+
+            <div id="controlsWrapper" class="hidden">
+                <button data-choice="rock">ROCK</button>
+                <button data-choice="paper">PAPER</button>
+                <button data-choice="scissors">SCISSORS</button>
+            </div>
+
+            <div class="panel">
+                <p id="round"></p>
+                <p id="result"></p>
+                <p id="score"></p>
+                <p id="final"></p>
+            </div>
+
+            <button id="reset" class="reset-btn">BACK</button>
+
+        </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
