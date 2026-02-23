@@ -24,6 +24,7 @@ const resultEl = document.getElementById("result");
 const scoreEl = document.getElementById("score");
 const finalEl = document.getElementById("final");
 const resetBtn = document.getElementById("reset");
+const resetRoundBtn = document.getElementById("resetRound");
 
 themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
@@ -32,22 +33,61 @@ themeToggle.addEventListener("click", () => {
 singleModeBtn.addEventListener("click", () => {
     isMultiplayer = false;
     engine = new GameEngine({ maxRounds: 5, difficulty: "medium" });
+
     modeSelect.classList.add("hidden");
     gameArea.classList.remove("hidden");
+
     onlineControls.classList.add("hidden");
     controlsWrapper.classList.remove("hidden");
+
+    resetRoundBtn.classList.remove("hidden");
 });
 
 multiModeBtn.addEventListener("click", () => {
     isMultiplayer = true;
+
     modeSelect.classList.add("hidden");
     gameArea.classList.remove("hidden");
+
     onlineControls.classList.remove("hidden");
     controlsWrapper.classList.add("hidden");
+
+    resetRoundBtn.classList.add("hidden");
 });
 
 resetBtn.addEventListener("click", () => {
-    window.location.reload();
+    modeSelect.classList.remove("hidden");
+    gameArea.classList.add("hidden");
+
+    onlineControls.classList.add("hidden");
+    controlsWrapper.classList.add("hidden");
+
+    roundEl.textContent = "";
+    resultEl.textContent = "";
+    scoreEl.textContent = "";
+    finalEl.textContent = "";
+    roomInfo.textContent = "";
+
+    engine = null;
+    isMultiplayer = false;
+    currentRoom = null;
+    role = null;
+    hasPlayedThisRound = false;
+
+    enableButtons();
+});
+
+resetRoundBtn.addEventListener("click", () => {
+    if (!engine) return;
+
+    engine.reset();
+
+    roundEl.textContent = "";
+    resultEl.textContent = "";
+    scoreEl.textContent = "";
+    finalEl.textContent = "";
+
+    enableButtons();
 });
 
 buttons.forEach(btn => {
@@ -100,8 +140,13 @@ socket.on("roomCreated", (roomId) => {
 socket.on("gameStart", ({ roomId, role: assignedRole }) => {
     currentRoom = roomId;
     role = assignedRole;
+
     roomInfo.textContent = "YOU ARE " + role.toUpperCase();
+
+    onlineControls.classList.add("hidden");
+
     controlsWrapper.classList.remove("hidden");
+
     hasPlayedThisRound = false;
     enableButtons();
 });
