@@ -92,6 +92,11 @@ button:disabled {
     cursor: not-allowed;
 }
 
+.difficulty-btn.active {
+    background: #ff9900;
+    color: black;
+}
+
 .mode-select {
     display: flex;
     flex-direction: column;

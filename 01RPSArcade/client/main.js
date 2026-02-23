@@ -25,6 +25,8 @@ const scoreEl = document.getElementById("score");
 const finalEl = document.getElementById("final");
 const resetBtn = document.getElementById("reset");
 const resetRoundBtn = document.getElementById("resetRound");
+const difficultySelect = document.getElementById("difficultySelect");
+const difficultyButtons = document.querySelectorAll("[data-difficulty]");
 
 themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
@@ -32,12 +34,14 @@ themeToggle.addEventListener("click", () => {
 
 singleModeBtn.addEventListener("click", () => {
     isMultiplayer = false;
+
     engine = new GameEngine({ maxRounds: 5, difficulty: "medium" });
 
     modeSelect.classList.add("hidden");
     gameArea.classList.remove("hidden");
 
     onlineControls.classList.add("hidden");
+    difficultySelect.classList.remove("hidden");
     controlsWrapper.classList.remove("hidden");
 
     resetRoundBtn.classList.remove("hidden");
@@ -49,6 +53,7 @@ multiModeBtn.addEventListener("click", () => {
     modeSelect.classList.add("hidden");
     gameArea.classList.remove("hidden");
 
+    difficultySelect.classList.add("hidden");
     onlineControls.classList.remove("hidden");
     controlsWrapper.classList.add("hidden");
 
@@ -61,6 +66,8 @@ resetBtn.addEventListener("click", () => {
 
     onlineControls.classList.add("hidden");
     controlsWrapper.classList.add("hidden");
+
+    difficultySelect.classList.add("hidden");
 
     roundEl.textContent = "";
     resultEl.textContent = "";
@@ -94,6 +101,18 @@ buttons.forEach(btn => {
     btn.addEventListener("click", () => {
         const choice = btn.dataset.choice;
         handleMove(choice);
+    });
+});
+
+difficultyButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        if (!engine) return;
+
+        const level = btn.dataset.difficulty;
+        engine.setDifficulty(level);
+
+        difficultyButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
     });
 });
 
