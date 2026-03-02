@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Matrix</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+
+
+</head>
+
+<body>
+
+    <main class="app">
+
+        <header class="app__header">
+            <h1>Pixel Matrix</h1>
+            <button id="theme-toggle">Theme</button>
+        </header>
+
+        <section class="app__body">
+
+            <aside class="control-panel">
+
+                <div class="control-box">
+                    <h2>Grid Size</h2>
+                    <input type="range" id="grid-size" min="8" max="64" value="16">
+                    <span id="grid-size-display">16 x 16</span>
+                </div>
+
+                <div class="control-box">
+                    <h2>Color</h2>
+                    <input type="color" id="color-picker" value="#ff8c42">
+                </div>
+
+                <div class="control-box">
+                    <h2>Mode</h2>
+                    <div class="button-group">
+                        <button data-mode="color">Color</button>
+                        <button data-mode="random">Random</button>
+                        <button data-mode="eraser">Eraser</button>
+                        <button id="clear-btn">Clear</button>
+                        <button id="export-btn">Export PNG</button>
+                    </div>
+                </div>
+
+            </aside>
+
+            <section class="grid-screen">
+                <div id="grid-container"></div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>

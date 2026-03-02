@@ -1,0 +1,57 @@
+:root {
+    --bg: #1b1512;
+    --panel-bg: #241c18;
+    --grid-bg: #2d2320;
+
+    --border: #c05621;
+    --accent: #ff8c42;
+    --highlight: #f4a261;
+
+    --text-main: #fdf6e3;
+    --text-dim: #c8b6a6;
+
+    --button-text: #1b1512;
+}
+
+body.alt {
+    --bg: #14121a;
+    --panel-bg: #1f1c29;
+    --grid-bg: #26233a;
+
+    --border: #7b2cbf;
+    --accent: #9d4edd;
+    --highlight: #c77dff;
+
+    --text-main: #f8f7ff;
+    --text-dim: #b8b8ff;
+
+    --button-text: #14121a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Press Start 2P', cursive;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--bg);
+
+    background-image:
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.04) 0px,
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px,
+            transparent 40px),
+        repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0.04) 0px,
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px,
+            transparent 40px);
+}
