@@ -1,6 +1,6 @@
 # Pixel Matrix
 
-**Live Demo:**  
+**Live Demo:**  <https://pixel-matrix-mauve.vercel.app/>
 
 A retro-inspired pixel drawing app that looks like it belongs on an arcade cabinet but runs on clean, modular vanilla JavaScript.
 
