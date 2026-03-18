@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueByte</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-theme="light">
+
+    <div class="grid-background"></div>
+
+    <div class="global-controls">
+        <button id="themeToggle">THEME</button>
+        <button id="soundToggle">SOUND</button>
+    </div>
+
+    <main class="app">
+        <div class="calculator-card">
+
+            <header class="top-bar">
+                <h1>BlueByte</h1>
+            </header>
+
+            <section class="display-wrapper">
+
+                <div id="history" class="history"></div>
+
+                <div class="display-box">
+                    <div id="display" class="display">0</div>
+                    <button id="copyBtn" class="copy">COPY</button>
+                </div>
+
+            </section>
+
+            <section class="buttons">
+
+                <button class="btn operator" data-action="clear">C</button>
+                <button class="btn operator" data-value="/">÷</button>
+                <button class="btn operator" data-value="*">×</button>
+                <button class="btn operator" data-value="-">−</button>
+
+                <button class="btn digit" data-value="7">7</button>
+                <button class="btn digit" data-value="8">8</button>
+                <button class="btn digit" data-value="9">9</button>
+                <button class="btn operator" data-value="+">+</button>
+
+                <button class="btn digit" data-value="4">4</button>
+                <button class="btn digit" data-value="5">5</button>
+                <button class="btn digit" data-value="6">6</button>
+                <button class="btn equals" data-action="equals">=</button>
+
+                <button class="btn digit" data-value="1">1</button>
+                <button class="btn digit" data-value="2">2</button>
+                <button class="btn digit" data-value="3">3</button>
+
+                <button class="btn digit zero" data-value="0">0</button>
+                <button class="btn digit" data-value=".">.</button>
+
+            </section>
+
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
