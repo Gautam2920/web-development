@@ -1,5 +1,7 @@
 # Neon Noughts
 
+**Live Demo:**  <https://neon-noughts.vercel.app/>
+
 A deceptively innocent Tic Tac Toe game that starts cute… and then absolutely refuses to let you win on hard mode.
 
 Built with clean vanilla JavaScript, a soft retro aesthetic, and an AI that does not believe in mercy.
