@@ -183,9 +183,14 @@ function aiMove() {
 
     if (state.difficulty === "easy") {
         index = randomMove();
+
     } else if (state.difficulty === "medium") {
         index = Math.random() < 0.5 ? randomMove() : bestMove();
-    } else {
+
+    } else if (state.difficulty === "hard") {
+        index = Math.random() < 0.85 ? bestMove() : randomMove();
+
+    } else if (state.difficulty === "nightmare") {
         index = bestMove();
     }
 

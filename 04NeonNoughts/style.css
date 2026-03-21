@@ -81,6 +81,23 @@ button.secondary {
     color: white;
 }
 
+.diff[data-level="nightmare"] {
+    background: #ff2e63;
+    color: white;
+    box-shadow: 5px 5px 0px #8b0000;
+}
+
+.diff[data-level="nightmare"].active {
+    background: #8b0000;
+    color: #fff;
+    box-shadow: 3px 3px 0px #300000;
+}
+
+.diff[data-level="nightmare"]:not(.active):hover {
+    animation: jitter 0.2s infinite;
+    transform: none;
+}
+
 #board {
     margin: 40px auto;
     display: grid;
@@ -176,5 +193,31 @@ button.secondary {
 
     #board {
         width: 95vw;
+    }
+}
+
+@keyframes jitter {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, -1px);
+    }
+
+    80% {
+        transform: translate(2px, 1px);
+    }
+
+    100% {
+        transform: translate(0, 0);
     }
 }
