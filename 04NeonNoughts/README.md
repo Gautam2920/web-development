@@ -11,11 +11,11 @@ Built with clean vanilla JavaScript, a soft retro aesthetic, and an AI that does
 ## Features
 
 - Three difficulty modes:
-  - Easy → emotionally supportive  
-  - Medium → occasionally suspicious  
-  - Hard → mathematically disrespectful  
+  - Easy -> emotionally supportive  
+  - Medium -> occasionally suspicious  
+  - Hard -> mathematically disrespectful  
+  - Nightmare -> pure perfection
 
-- Smart AI powered by Minimax
 - Smooth turn-based gameplay with subtle animations
 - Score tracking
 - Undo system (for “that was a misclick” moments)
